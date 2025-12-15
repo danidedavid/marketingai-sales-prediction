@@ -4,6 +4,9 @@ import numpy as np
 import joblib
 from pathlib import Path
 
+# Caminhos revisados para estrutura final do repositório
+
+
 # ===============================================================
 # CONFIGURAÇÃO DO APP
 # ===============================================================

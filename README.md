@@ -422,3 +422,4 @@ Os termos completos estão no arquivo `LICENSE`.
 - Ao Programa de Formação CDPro (Cientista de Dados Profissional) que tem como grande Mestre, Eduardo Rocha (obrigada por ensinar sem complicar!)   
 - À comunidade open source (pandas, scikit-learn, streamlit etc.), cujas bibliotecas e ferramentas tornaram este trabalho possível.
 
+<!-- Caminhos de dados revisados e validados para estrutura final do repositório -->
