@@ -102,16 +102,6 @@ Essa interface transforma os resultados técnicos do projeto em uma ferramenta a
 
 ---
 
-
-Diante disso, o projeto busca responder perguntas como:
-
-- Quais padrões de venda podem ser identificados automaticamente?
-- Existem grupos de produtos com comportamentos semelhantes?
-- Como o preço médio influencia o volume de vendas?
-- É possível prever as vendas futuras de forma consistente para apoiar decisões de estoque e estratégia comercial?
-
----
-
 ## 2. Estrutura do Repositório
 
 ```
@@ -123,7 +113,7 @@ marketingai-sales-prediction/
 │   │
 │   └── processed/
 │       ├── df_processed.parquet
-│       └── df_cluster_id.parquet
+│       └── df_com_cluster_id.parquet
 │
 ├── src/
 │   ├── models/
@@ -169,7 +159,7 @@ data/raw/base_mensal.csv
 ### Dados processados
 ```
 data/processed/df_processed.parquet
-data/processed/df_cluster_id.parquet
+data/processed/df_com_cluster_id.parquet
 ```
 
 Esses arquivos garantem reprodutibilidade total da análise e permitem executar os notebooks exatamente como no projeto original.
@@ -244,7 +234,7 @@ Execute na ordem:
 ```python
 df = pd.read_csv('data/raw/base_mensal.csv')
 df_processed = pd.read_parquet('data/processed/df_processed.parquet')
-df_cluster = pd.read_parquet('data/processed/df_cluster_id.parquet')
+df_cluster = pd.read_parquet('data/processed/df_com_cluster_id.parquet')
 ```
 
 Todos os notebooks funcionam com caminhos relativos, garantindo reprodutibilidade no ambiente do usuário.
@@ -276,7 +266,7 @@ A aplicação permite:
 Caminho interno do dataset usado pela aplicação:
 
 ```python
-df = pd.read_parquet('data/processed/df_cluster_id.parquet')
+df = pd.read_parquet('data/processed/df_com_cluster_id.parquet')
 ```
 
 ---
@@ -358,11 +348,19 @@ Para publicar no **Streamlit Community Cloud**:
 app/streamlit_app.py
 ```
 
+A aplicação foi implantada utilizando o Streamlit Community Cloud.
+
+Para garantir compatibilidade com as bibliotecas utilizadas (especialmente `pyarrow`),
+o ambiente de execução foi configurado para utilizar **Python 3.11**, conforme definido
+no arquivo `runtime.txt` e nas configurações avançadas da plataforma.
+
+O deploy é realizado automaticamente a partir do repositório GitHub.
+
+
 6. Confirme o uso do `requirements.txt`
 
 A plataforma realizará o build automático e exibirá a URL final da aplicação.
 
----
 
 ## 9. CI/CD com GitHub Actions
 
@@ -422,4 +420,4 @@ Os termos completos estão no arquivo `LICENSE`.
 - Ao Programa de Formação CDPro (Cientista de Dados Profissional) que tem como grande Mestre, Eduardo Rocha (obrigada por ensinar sem complicar!)   
 - À comunidade open source (pandas, scikit-learn, streamlit etc.), cujas bibliotecas e ferramentas tornaram este trabalho possível.
 
-<!-- Caminhos de dados revisados e validados para estrutura final do repositório -->
+
