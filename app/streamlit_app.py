@@ -57,10 +57,24 @@ def carregar_modelos():
     kmeans_cluster = joblib.load(MODELS_DIR / "kmeans_cluster.pkl")
     return preprocess_pred, best_model, scaler_cluster, kmeans_cluster
 
+from pathlib import Path
+import pandas as pd
+import streamlit as st
 
+# =========================================================
+# Caminhos base (raiz do projeto)
+# =========================================================
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+DATA_PROCESSED_PATH = PROJECT_ROOT / "data" / "processed" / "df_com_cluster_id.parquet"
+
+# =========================================================
+# Carregar dataframe
+# =========================================================
 @st.cache_data
 def carregar_df():
-    return pd.read_parquet(DATA_DIR / "data/processed/df_cluster_id.parquet")
+    return pd.read_parquet(DATA_PROCESSED_PATH)
+
 
 
 preprocess_pred, best_model, scaler_cluster, kmeans_cluster = carregar_modelos()
